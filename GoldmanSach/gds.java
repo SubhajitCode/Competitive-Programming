@@ -14,33 +14,6 @@ class Pair
 }
 public class gds
 {
-  public static void findpair(Map<Integer,Integer> dict,int m,int ll,int ul,Pair p)
-   {
-    
-     
-        Object[] arry=dict.keySet().toArray();
-        int middle=(ll+ul)/2;
-       if(ll==middle)
-       {
-            p.set(ll,dict.get((int)arry[middle]));
-            return;
-       }
-       if((int)arry[middle]>m)
-       {
-           findpair(dict, m, ll, middle,p);
-       }
-       else if((int)arry[middle]==m)
-       {
-            p.set(middle,dict.get(m));
-            return;
-
-       }
-       else
-       {
-           findpair(dict, m, middle, ul,p);
-       }
-       
-   }
     public static void main(String[] args)
     {
         int i,k;
@@ -68,12 +41,8 @@ public class gds
         for(i=0;i<k;i++)
         {
             custmer[i]=input.nextInt();
-        }
-        for(i=0;i<k;i++)
-        {
-           Pair pa = new Pair();
-           findpair(dict,custmer[i],0,n,pa);
-            System.out.println(pa.get());
+            int result=dict.floorKey(custmer[i]);
+            System.out.println(dict.get(result));
             
         }
 
